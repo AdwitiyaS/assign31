@@ -30,7 +30,8 @@ pipeline {
 
         stage('Create and Deploy to Dev Environment') {
             steps {
-                bat 'docker-compose down --remove-orphans'
+                bat 'docker stop app || true'
+                bat 'docker rm app || true'
                 bat 'docker-compose up -d'
             }
         }
